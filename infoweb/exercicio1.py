@@ -1,1 +1,1 @@
-printn("ola")
+print("ola")
