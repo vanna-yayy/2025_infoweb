@@ -16,4 +16,4 @@ ddd = int(input())
 if ddd in ddds:
     print(ddds[ddd])
 else:
-    print("DDD nao cadastrado")
+    print("DDD não cadastrado")
