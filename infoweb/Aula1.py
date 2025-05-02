@@ -1,2 +1,2 @@
-print ("hello word") 
+print ("hello world") 
 print ("oi")
