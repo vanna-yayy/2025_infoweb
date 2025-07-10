@@ -57,5 +57,5 @@ class Paciente:
     
 
 class UI():
-     def main: 
+     def main
         

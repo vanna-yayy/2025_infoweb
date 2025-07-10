@@ -1,18 +1,15 @@
 from enum import Enum
 
 class Pagamento(Enum):
-    EM_ABERTO = "Em Aberto"
-    PAGO_PARCIAL = "Pago Parcial"
-    PAGO = "Pago"
+    EM_ABERTO = 0
+    PAGO_PARCIAL = 1
+    PAGO = 2
 
 class Boleto:
-    def __init__(self, codigo_barras, data_emissao, data_vencimento, valor):
-        self.__codigo_barras = codigo_barras
-        self.__data_emissao = datetime.strptime(data_emissao, "%d/%m/%Y").date()
-        self.__data_vencimento = datetime.strptime(data_vencimento, "%d/%m/%Y").date()
+    def __init__(self,  valor):
         self.__valor = valor
-        self.__valor_pago = 0.0
-
+        self.__valor_pago = 0
+        self.__situacao_pagamento = Pagamento.EM_ABERTO
     def pagar(self, valor):
         self.__valor_pago += valor
 
