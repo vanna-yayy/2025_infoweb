@@ -55,7 +55,55 @@ class Paciente:
     def __str__(self):
         return f"Nome: {self.__nome}\nCPF: {self.__cpf}\nTelefone: {self.__telefone}\nNascimento: {self.__nascimento.strftime('%d/%m/%Y')}\nIdade: {self.idade()}"
     
+class UI:
+    def __init__(self):
+        self.pacientes = []
 
-class UI():
-     def main
-        
+    def exibir_menu(self):
+        print("\n--- Menu ---")
+        print("1. Cadastrar paciente")
+        print("2. Listar pacientes")
+        print("3. Sair")
+
+    def cadastrar_paciente(self):
+        try:
+            nome = input("Nome: ").strip()
+            cpf = input("CPF: ").strip()
+            telefone = input("Telefone: ").strip()
+            nascimento = input("Data de nascimento (DD/MM/AAAA): ").strip()
+            nascimento_date = datetime.strptime(nascimento, "%d/%m/%Y").date()
+            
+            paciente = Paciente(nome, cpf, telefone, nascimento_date)
+            self.pacientes.append(paciente)
+            print("\nPaciente cadastrado com sucesso!")
+
+        except ValueError as e:
+            print(f"Erro: {e}")
+
+    def listar_pacientes(self):
+        if not self.pacientes:
+            print("Nenhum paciente cadastrado.")
+        else:
+            print("\n--- Lista de Pacientes ---")
+            for i, paciente in enumerate(self.pacientes, start=1):
+                print(f"\nPaciente {i}:")
+                print(paciente)
+
+    def main(self):
+        while True:
+            self.exibir_menu()
+            opcao = input("Escolha uma opção: ").strip()
+
+            if opcao == '1':
+                self.cadastrar_paciente()
+            elif opcao == '2':
+                self.listar_pacientes()
+            elif opcao == '3':
+                print("Saindo do programa.")
+                break
+            else:
+                print("Opção inválida. Tente novamente.")
+                
+if __name__ == "__main__":
+    ui = UI()
+    ui.main()
