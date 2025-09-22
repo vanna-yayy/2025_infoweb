@@ -26,8 +26,7 @@ class Cliente:
         dic["fone"])
     
 
-    def __str__(self):
-        return str(self.__nome)
+    def __str__(self):return f"{self.__id}-{self.__nome}-{self.__email}–{self.__fone}"
     
 
 import json
